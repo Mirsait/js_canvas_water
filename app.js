@@ -8,6 +8,9 @@ var array = [];
 
 var maxRadiusCircle = 250;
 
+var audioStart = [2.153, 3.211, 4.732, 5.295, 7.918];
+var audioStop =  [2.210, 3.330, 4.792, 5.351, 7.992];
+
 function draw(){
 	canvas = document.getElementById('canvas');
 	canvasContext = canvas.getContext('2d');	
@@ -20,7 +23,23 @@ function draw(){
 		drawEverything();
 	}, 1000/framePerSecond);
 
-	canvas.addEventListener('mousedown',createCircleClick);	
+	canvas.addEventListener('mousedown',createCircleClick);
+	
+	var rnd;
+	var myAudio = document.getElementById('myAudio');		
+	canvas.addEventListener('click', function() {
+		rnd = Math.round(Math.random() * 4);
+	    myAudio.currentTime = audioStart[rnd];
+	    stopTime = audioStop[rnd];
+	    myAudio.play();
+	    if(myAudio.currentTime>=stopTime) myAudio.stop();
+	  }, false);
+	myAudio.addEventListener('timeupdate', function() {
+		if (this.currentTime > stopTime) {
+			this.pause();
+		}
+	});
+	
 }
 
 function createCircleClick(evt) {
