@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Ripples from the rain</title>
 	
 <style type="text/css">
 	canvas{
@@ -17,6 +17,8 @@
 <body onload="draw();">
 
 	<canvas id="canvas" width="500px" height="500px"></canvas>
+	
+	<audio id="myAudio" src="kap.mp3"></audio>
 
 </body>
 </html>
